@@ -10,11 +10,13 @@ export const databaseConfig: TypeOrmModuleOptions = {
   database: process.env.DB_NAME || 'daily_tasks',
   entities: [__dirname + '/../**/*.entity{.ts,.js}'],
   synchronize: true, // Permitir sincronização em produção para criar tabelas
-  logging: process.env.NODE_ENV !== 'production',
+  logging: true, // Habilitar logs para debug
   ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false,
   extra: {
     max: 20,
     connectionTimeoutMillis: 5000,
     idleTimeoutMillis: 30000,
   },
+  migrations: [],
+  migrationsRun: false,
 }

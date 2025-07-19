@@ -4,6 +4,12 @@ import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 import { HttpExceptionInterceptor } from './common/interceptors/http-exception.interceptor';
 
+// Polyfill para crypto em ambientes que não suportam
+if (typeof globalThis.crypto === 'undefined') {
+  const { webcrypto } = require('crypto');
+  globalThis.crypto = webcrypto;
+}
+
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 

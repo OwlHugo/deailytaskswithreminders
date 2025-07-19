@@ -9,8 +9,8 @@ export const databaseConfig: TypeOrmModuleOptions = {
   password: process.env.DB_PASSWORD || 'postgres',
   database: process.env.DB_NAME || 'daily_tasks',
   entities: [__dirname + '/../**/*.entity{.ts,.js}'],
-  synchronize: true, // Permitir sincronização em produção para criar tabelas
-  logging: true, // Habilitar logs para debug
+  synchronize: true, 
+  logging: true, 
   ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false,
   extra: {
     max: 20,

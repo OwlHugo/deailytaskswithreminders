@@ -1,1 +1,1 @@
-web: node --version && npm run start:prod 
+web: npm run install:prod && npm run start:prod 
